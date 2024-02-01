@@ -1,0 +1,24 @@
+.menu-item {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    &:hover {
+        background-color: transparent !important; /* Removes hover effect */
+    }
+
+    &.Mui-focusVisible {
+        background-color: transparent !important; /* Removes focus background */
+    }
+
+    &.button {
+        &:hover {
+            background-color: inherit !important; /* Keeps button background color on hover */
+        }
+        &:active {
+            background-color: inherit !important; /* Keeps button background color on click */
+        }
+    }
+
+    &-inner-wrapper {
+        padding: 10px 0;
+    }
+}
