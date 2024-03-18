@@ -12,6 +12,9 @@ export const NavigationBar = (props: NavigationBarProps): JSX.Element | null => 
     const { Title } = props;
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const { gameMode, setGameMode, playerMarker, setPlayerMarker, difficulty, setDifficulty } = useGame();
+    const features = {
+        playLocal: false
+    }
 
     const isMenuOpen = Boolean(anchorEl);
 
@@ -55,21 +58,23 @@ export const NavigationBar = (props: NavigationBarProps): JSX.Element | null => 
                     open={isMenuOpen}
                     onClose={handleMenuClose}
                 >
-                    <MenuItem onClick={toggleGameMode} autoFocus={false} divider={true} className='menu-item'>
-                        <Grid container justifyContent="space-between" alignItems="center" className='menu-item-inner-wrapper'>
-                            <Grid item xs={12}>
-                                <Typography variant="overline" display="block" gutterBottom>
-                                    Game Mode
-                                </Typography>
+                    {features.playLocal &&
+                        <MenuItem onClick={toggleGameMode} autoFocus={false} divider={true} className='menu-item'>
+                            <Grid container justifyContent="space-between" alignItems="center" className='menu-item-inner-wrapper'>
+                                <Grid item xs={12}>
+                                    <Typography variant="overline" display="block" gutterBottom>
+                                        Game Mode
+                                    </Typography>
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <ButtonGroup variant="contained" aria-label="Game mode button group">
+                                        <Button color={gameMode === 'AI' ? 'primary' : 'inherit'}>AI</Button>
+                                        <Button color={gameMode === 'Local' ? 'primary' : 'inherit'}>Local</Button>
+                                    </ButtonGroup>
+                                </Grid>
                             </Grid>
-                            <Grid item xs={12}>
-                                <ButtonGroup variant="contained" aria-label="Game mode button group">
-                                    <Button color={gameMode === 'AI' ? 'primary' : 'inherit'}>AI</Button>
-                                    <Button color={gameMode === 'Local' ? 'primary' : 'inherit'}>Local</Button>
-                                </ButtonGroup>
-                            </Grid>
-                        </Grid>
-                    </MenuItem>
+                        </MenuItem>
+                    }
                     <MenuItem onClick={togglePlayerMarker} autoFocus={false} divider={true} className='menu-item'>
                         <Grid container justifyContent="space-between" alignItems="center" className='menu-item-inner-wrapper'>
                             <Grid item xs={12}>

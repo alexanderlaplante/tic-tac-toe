@@ -5,7 +5,7 @@ import { TicTacToeGame, NavigationBar } from './Components';
 function App() {
     return (
         <div className="App">
-            <NavigationBar Title='TIC-TAC-TOE'/>
+            <NavigationBar Title='AI TIC-TAC-TOE'/>
             <main>
                 <TicTacToeGame />
             </main>
