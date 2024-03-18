@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Board, MarkerX, MarkerO, ResetOverlay } from '..';
 import { GameState } from '../../Constants';
-import Button from '@mui/material/Button';
 import { CalculateWinner } from '../../Utils/CalculateWinner';
 import { useGame } from '../../Context/GameContext';
 import { Grid, Typography, IconButton } from '@mui/material';
@@ -107,15 +106,7 @@ export const TicTacToeGame = (): JSX.Element => {
         setGameState(GameState.Playing);
         setWinner(null);
     };
-
-    const PlayerMarker = () => {
-        if (xIsNext) {
-            return <MarkerX />;
-        } else {
-            return <MarkerO />;
-        }
-    };
-
+    
     let status;
     if (gameState === GameState.GameWon) {
         const winner = CalculateWinner(squares);
